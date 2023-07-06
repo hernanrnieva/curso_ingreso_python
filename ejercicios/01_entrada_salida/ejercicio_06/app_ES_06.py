@@ -39,11 +39,9 @@ class App(customtkinter.CTk):
         self.btn_sumar = customtkinter.CTkButton(master=self, text="Sumar", command=self.btn_sumar_on_click)
         self.btn_sumar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
     def btn_sumar_on_click(self):
         pass
      
-        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

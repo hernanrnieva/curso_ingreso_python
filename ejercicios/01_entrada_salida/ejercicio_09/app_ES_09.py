@@ -38,10 +38,9 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
     def btn_mostrar_on_click(self):
-        pass
-        
+        numero = int(self.txt_sueldo.get())
+        alert("lalal", numero)
     
 if __name__ == "__main__":
     app = App()

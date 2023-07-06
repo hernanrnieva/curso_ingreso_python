@@ -1,12 +1,11 @@
-import tkinter
 from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Hernan
+apellido: Nieva
 ---
 Ejercicio: entrada_salida_05
 ---
@@ -39,14 +38,12 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
     def btn_mostrar_on_click(self):
-        pass
+        titulo_alert = "Esto es una alerta"
+        nombre, edad = self.txt_nombre.get(), self.txt_edad.get()
 
+        alert(titulo_alert, " ".join(["Usted se llama", nombre, "y tiene ", edad, "años"]))
 
-        
-        
-    
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

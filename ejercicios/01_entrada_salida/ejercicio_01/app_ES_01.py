@@ -1,20 +1,17 @@
-import tkinter
 from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
 '''
-nombre:
-apellido:
+nombre: Hernan
+apellido: Nieva
 ---
 Ejercicio: entrada_salida_01
 ---
 Enunciado:
-Al presionar el  botón, se debe mostrar un mensaje como el siguiente "Esto no anda, funciona".
+Al presionar el botón, se debe mostrar un mensaje como el siguiente "Esto no anda, funciona".
 '''
-
 
 class App(customtkinter.CTk):
 
@@ -29,8 +26,8 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
-        pass
-
+        titulo_alerta, mensaje_alerta = "Esto es una alerta", "Esto no anda, funciona"
+        alert(titulo_alerta, mensaje_alerta)
 
 if __name__ == "__main__":
     app = App()
