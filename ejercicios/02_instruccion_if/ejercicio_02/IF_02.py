@@ -38,7 +38,6 @@ class App(customtkinter.CTk):
         
         if edad >= 18:
             alert("Esto es una alerta", "MAYOR")
-
     
 if __name__ == "__main__":
     app = App()
