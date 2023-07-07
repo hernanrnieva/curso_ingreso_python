@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Hernan
+apellido: Nieva
 ---
 Ejercicio: entrada_salida_07
 ---
@@ -17,6 +17,10 @@ transformarlos en números enteros, realizar dicha operación y luego mostrar el
 de la misma utilizando el Dialog Alert. Ej: "El resultado de la …… es: 755"  
 '''
 
+def mostrar_alert(resultado):
+    titulo_alert = "Esto es una alerta"
+    alert(titulo_alert, resultado)
+        
 class App(customtkinter.CTk):
     
     def __init__(self):
@@ -50,17 +54,21 @@ class App(customtkinter.CTk):
         self.btn_dividir.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def btn_sumar_on_click(self):
-        pass
+        sumando_1, sumando_2 = int(self.txt_operador_a.get()), int(self.txt_operador_b.get())
+        mostrar_alert(sumando_1 + sumando_2)
 
     def btn_restar_on_click(self):
-        pass
+        restando, resta = int(self.txt_operador_a.get()), int(self.txt_operador_b.get())
+        mostrar_alert(restando - resta)
 
     def btn_multiplicar_on_click(self):
-        pass
+        factor_1, factor_2 = int(self.txt_operador_a.get()), int(self.txt_operador_b.get())
+        mostrar_alert(factor_1 * factor_2)
 
     def btn_dividir_on_click(self):
-        pass
-        
+        dividendo, divisor = int(self.txt_operador_a.get()), int(self.txt_operador_b.get())
+        mostrar_alert(int(dividendo / divisor))
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
