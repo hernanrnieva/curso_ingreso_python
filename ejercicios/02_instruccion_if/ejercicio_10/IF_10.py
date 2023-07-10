@@ -5,10 +5,9 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 import random
 
-
 '''
-nombre:
-apellido:
+nombre: Hernan
+apellido: Nieva
 ---
 Ejercicio: instrucion_if_10
 ---
@@ -31,11 +30,19 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
     def btn_mostrar_on_click(self):
-        pass  
-            
+        numero = random.randint(1, 10)
+        mensaje = ""
 
+        if numero >= 6:
+            mensaje += "Promoción directa, la nota es "
+        elif numero >= 4:
+            mensaje += "Aprobado, la note es "
+        else:
+            mensaje += "Desaprobado, la nota es "
+
+        alert("Esto es una alerta", mensaje + str(numero))
+            
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
