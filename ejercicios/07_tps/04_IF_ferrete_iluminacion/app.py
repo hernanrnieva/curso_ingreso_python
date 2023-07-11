@@ -41,34 +41,35 @@ class App(customtkinter.CTk):
 
     def btn_calcular_on_click(self):
         cantidad, marca = int(self.combobox_cantidad.get()), self.combobox_marca.get()
-        total = cantidad * 800
+        total, descuento = cantidad * 800, 1.0
 
         if cantidad >= 6:
-            total *= 0.5
+            descuento *= 0.5
 
         elif cantidad == 5:
             if marca == "ArgentinaLuz":
-                total *= 0.6
+                descuento *= 0.6
             else:
-                total *= 0.7
+                descuento *= 0.7
 
         elif cantidad == 4:
             if marca == "ArgentinaLuz" or marca == "FelipeLamparas":
-                total *= 0.75
+                descuento *= 0.75
             else:
-                total *= 0.8
+                descuento *= 0.8
 
         elif cantidad == 3:
             if marca == "ArgentinaLuz":
-                total *= 0.85
+                descuento *= 0.85
             elif marca == "FelipeLamparas":
-                total *= 0.9
+                descuento *= 0.9
             else:
-                total *= 0.95
+                descuento *= 0.95
 
         if total > 4000:
-            total *= 0.95
-
+            descuento *= 0.95
+        
+        total = str(total * descuento)
         alert("Esto es una alerta", "El importe total final es de: " + str(total))
     
 if __name__ == "__main__":
