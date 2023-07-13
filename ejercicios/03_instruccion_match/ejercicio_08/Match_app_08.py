@@ -4,14 +4,14 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
 '''
+Nombre: Hernan
+Apellido: Nieva
 Enunciado:
 Obtener el destino seleccionado en el combobox_destino, luego al presionar el botón 
 ‘Informar’ indicar mediante alert si en el destino hace frío o calor la mayoría 
 de las estaciones del año.
 '''
-
 
 class App(customtkinter.CTk):
     
@@ -27,10 +27,17 @@ class App(customtkinter.CTk):
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
         
-    
     def btn_informar_on_click(self):
-        pass
-    
+        destino, temperatura = self.combobox_destino.get(), ""
+
+        match destino:
+            case "Mar del plata" | "Cataratas":
+                temperatura += "Este"
+            case _:
+                temperatura += "Sur"
+
+        if(temperatura):
+            alert("Esto es una alerta", "En este lugar suele hacer " + temperatura)
     
 if __name__ == "__main__":
     app = App()

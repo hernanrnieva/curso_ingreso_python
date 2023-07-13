@@ -4,8 +4,9 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
 '''
+Nombre: Hernan
+Apellido: Nieva
 Enunciado:
 Al presionar el botón ‘Informar’ mostrar mediante alert los siguientes mensajes 
 en función del mes seleccionado:
@@ -14,9 +15,7 @@ en función del mes seleccionado:
     Si ya pasó el invierno: ‘¡Ya pasamos frío, ahora calor!’
 	
 Aclaracion: tomamos a Julio y Agosto como los meses de invierno
-
 '''
-
 
 class App(customtkinter.CTk):
     
@@ -34,10 +33,19 @@ class App(customtkinter.CTk):
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
         
-    
     def btn_informar_on_click(self):
-        pass
-    
+        mes, mensaje = self.combobox_mes.get(), ""
+
+        match mes:
+            case "Enero" | "Febrero" | "Marzo" | "Abril" | "Mayo" | "Junio":
+                mensaje += "Falta para el invierno.."
+            case "Julio" | "Agosto":
+                mensaje += "Abrigate que hace frío!"
+            case "Septiembre" | "Octubre" | "Nomviembre" | "Diciembre":
+                mensaje += "Ya pasamos frío, ahora calor!"
+
+        if(mensaje):
+            alert("Esto es una alerta", mensaje)
     
 if __name__ == "__main__":
     app = App()

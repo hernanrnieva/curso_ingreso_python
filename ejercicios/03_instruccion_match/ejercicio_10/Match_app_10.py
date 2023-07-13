@@ -4,8 +4,9 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
 '''
+Nombre: Hernan
+Apellido: Nieva
 Una agencia de viajes nos pide informar si hacemos viajes a lugares según la estación del año. 
 En caso de hacerlo mostrar un alert con el mensaje “Se viaja”, 
 caso contrario mostrar “No se viaja”. 
@@ -14,7 +15,6 @@ caso contrario mostrar “No se viaja”.
     Si es otoño: se viaja a todos los lugares
     Si es primavera: se viaja a todos los lugares menos Bariloche
 '''
-
 
 class App(customtkinter.CTk):
     
@@ -28,7 +28,6 @@ class App(customtkinter.CTk):
         estaciones = ['Verano', 'Otoño', 'Invierno', 'Primavera']
         self.combobox_estaciones = customtkinter.CTkComboBox(master=self, values=estaciones)
         self.combobox_estaciones.grid(row=1, column=0, padx=20, pady=(10, 10))
-
         
         self.label_destinos = customtkinter.CTkLabel(master=self, text="Destinos")
         self.label_destinos.grid(row=2, column=0, padx=20, pady=10)
@@ -36,15 +35,33 @@ class App(customtkinter.CTk):
         self.combobox_destino = customtkinter.CTkComboBox(master=self, values=destinos)
         self.combobox_destino.grid(row=3, column=0, padx=20, pady=(10, 10))
 
-        
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
         
-    
     def btn_informar_on_click(self):
-        pass
-            
-    
+        estacion, destino = self.combobox_estaciones.get(), self.combobox_destino.get()
+        SE_VIAJA, NO_SE_VIAJA = "Tiene posibilidad de viajar", "No tiene posibilidad de viajar"
+        mensaje = NO_SE_VIAJA
+
+        match estacion:
+            case "Invierno":
+                match destino:
+                    case "Bariloche":
+                        mensaje = SE_VIAJA
+            case "Verano":
+                match destino:
+                    case "Mar del plata" | "Cataratas":
+                        mensaje = SE_VIAJA
+            case "Otoño":
+                mensaje = SE_VIAJA
+            case "Primavera":
+                mensaje = SE_VIAJA
+                match destino:
+                    case "Bariloche":
+                        mensaje = NO_SE_VIAJA
+
+        alert("Esto es una alerta", mensaje)
+        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

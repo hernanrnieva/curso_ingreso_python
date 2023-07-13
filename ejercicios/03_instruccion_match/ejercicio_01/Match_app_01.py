@@ -4,8 +4,9 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
 '''
+Nombre: Hernan
+Apellido: Nieva
 Enunciado:
 Obtener el valor del mes seleccionado en el combobox_mes y  
 al presionar el botón ‘Informar’ mostrar mediante alert los siguientes mensajes 
@@ -17,7 +18,6 @@ en función del mes seleccionado:
 
 En caso de seleccionar un mes distinto a los mencionados, no hacer nada
 '''
-
 
 class App(customtkinter.CTk):
     
@@ -35,10 +35,21 @@ class App(customtkinter.CTk):
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
         
-    
     def btn_informar_on_click(self):
-        pass
-    
+        mes, mensaje = self.combobox_mes.get(), ""
+
+        match mes:
+            case "Enero":
+                mensaje += "Que comiences bien el año!!"
+            case "Marzo":
+                mensaje += "A clases!"
+            case "Julio":
+                mensaje += "Se vienen las vacaciones!"
+            case "Diciembre":
+                mensaje += "Felices fiestas!"
+
+        if(mensaje):
+            alert("Esto es una alerta", mensaje)
     
 if __name__ == "__main__":
     app = App()
