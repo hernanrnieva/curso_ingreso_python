@@ -28,7 +28,7 @@ class App(customtkinter.CTk):
         estaciones = ['Verano', 'Otoño', 'Invierno', 'Primavera']
         self.combobox_estaciones = customtkinter.CTkComboBox(master=self, values=estaciones)
         self.combobox_estaciones.grid(row=1, column=0, padx=20, pady=(10, 10))
-        
+    
         self.label_destinos = customtkinter.CTkLabel(master=self, text="Destinos")
         self.label_destinos.grid(row=2, column=0, padx=20, pady=10)
         destinos = ['Bariloche', 'Mar del plata', 'Cataratas', 'Cordoba']
