@@ -4,13 +4,13 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
 '''
+Nombre: Hernan
+Apellido: Nieva
 Enunciado:
 Al presionar el botón ‘Mostrar Iteración’, mostrar mediante alert 
 10 repeticiones con números ASCENDENTE desde el 1 al 10
 '''
-
 
 class App(customtkinter.CTk):
     
@@ -22,10 +22,12 @@ class App(customtkinter.CTk):
         self.btn_mostrar_iteracion = customtkinter.CTkButton(master=self, text="Mostrar iteración", command=self.btn_mostrar_iteracion_on_click)
         self.btn_mostrar_iteracion.grid(row=2, pady=20, columnspan=2, sticky="nsew")
         
-    
     def btn_mostrar_iteracion_on_click(self):
-        pass
-    
+        numero = 1
+
+        while numero <= 10:
+            alert("Esto es una alerta", str(numero))
+            numero += 1
     
 if __name__ == "__main__":
     app = App()
