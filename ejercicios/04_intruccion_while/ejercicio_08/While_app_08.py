@@ -7,8 +7,6 @@ import customtkinter
 '''
 Nombre: Hernan
 Apellido: Nieva
-Nombre: Hernan
-Apellido: Nieva
 Enunciado:
 Al presionar el botón ‘Comenzar ingreso’, solicitar mediante prompt todos los números que el usuario quiera, 
 hasta que presione el botón Cancelar (en el prompt) o el usuario ingrese cero. 
@@ -34,7 +32,23 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, padx=20, pady=20, columnspan=2, sticky="nsew")
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        suma, multiplicación = 0, 1
+
+        while True:
+            numero = prompt("Esto es un prompt", "Ingresar algo que no sea vacío")
+            if numero is None or numero == "" or numero == "0":
+                respuesta = question("Confirmación", "Cancelo el prompt, desea cancelar?")
+                if respuesta:
+                    break
+            else:
+                numero = int(numero)
+                if numero < 0:
+                    multiplicación *= int(numero)
+                else:
+                    suma += int(numero)
+
+        self.txt_suma_acumulada.insert(0, str(suma))
+        self.txt_producto.insert(0, int(multiplicación))
     
 if __name__ == "__main__":
     app = App()

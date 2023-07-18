@@ -32,8 +32,24 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, padx=20, pady=20, columnspan=2, sticky="nsew")
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        suma, acumulador = 0, 0
 
+        while True:
+            numero = prompt("Esto es un prompt", "Ingresar algo que no sea vacío")
+            if numero is None or numero == "":
+                respuesta = question("Confirmación", "Cancelo el prompt, desea cancelar?")
+                if respuesta:
+                    break
+            else:
+                suma += int(numero)
+
+            acumulador += 1
+            print(str(suma) + " " + str(acumulador))
+
+        promedio = suma/acumulador
+        self.txt_suma_acumulada.insert(0, str(suma))
+        self.txt_promedio.insert(0, str(promedio))
+        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
