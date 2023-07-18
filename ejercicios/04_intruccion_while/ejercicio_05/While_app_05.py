@@ -28,7 +28,12 @@ class App(customtkinter.CTk):
 
         while letra != 'U' and letra != 'T' and letra != 'N':
             letra = prompt("Esto es un prompt", "Ingrese una letra")
-    
+            if letra is None or letra == "":
+                if question("Confirmación", "Cancelo el prompt, desea cancelar?"):
+                    quit()
+
+        alert("Esto es un alert", "Letra ingresada " + letra) 
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
