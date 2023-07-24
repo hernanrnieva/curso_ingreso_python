@@ -1,4 +1,6 @@
 '''
+Nombre: Hernan
+Apellido: Nieva
 UTN Software Factory está en la búsqueda de programadores para incorporar a su equipo de 
 trabajo. En las próximas semanas se realizará un exhaustivo proceso de selección. Para ello se 
 ingresarán los siguientes datos de los 10 postulantes para luego establecer distintas métricas 
@@ -26,7 +28,6 @@ from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
-
 
 class App(customtkinter.CTk):
 
