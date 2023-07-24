@@ -5,6 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+Nombre: Hernan
+Apellido: Nieva
 Al presionar el botón Mostrar pedir un número. mostrar los números divisores desde el 1 al número ingresado, 
 y mostrar la cantidad de números divisores encontrados.
 '''
@@ -20,11 +22,17 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
-
     def btn_mostrar_on_click(self):
-        pass
+        numero = int(prompt("Esto es un prompt", "Por favor ingrese un numero"))
+        divisores = 0
+
+        for i in range(1, numero + 1, 1):
+            if(numero%i == 0):
+                alert("Esto es una alert", "Número divisor encontrado: " + str(i))
+                divisores += 1
+
+        alert("Esto es una alert", "Total de números divisores: " + str(divisores))
         
-    
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
