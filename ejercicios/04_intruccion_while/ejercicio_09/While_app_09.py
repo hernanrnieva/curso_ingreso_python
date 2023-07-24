@@ -36,23 +36,32 @@ class App(customtkinter.CTk):
                               columnspan=2, sticky="nsew")
 
     def btn_comenzar_ingreso_on_click(self):
-        maximo, minimo, numero = 0, 0, ""
+        maximo, minimo, numero = None, None, ""
         
         numero = prompt("Esto es un prompt", "Por favor ingrese un número")
         while True:
-            if numero is None or numero == "" or numero == "0":
+            if numero is None or numero == "":
                 respuesta = question("Confirmación", "Cancelo el prompt, desea cancelar?")
                 if respuesta:
+                    if maximo is None or minimo is None:
+                        quit()
+                    
                     break
             else:
                 agregado = int(numero)
-                if agregado < minimo:
+                if minimo is None or maximo is None:
                     minimo = agregado
-                if agregado > maximo:
                     maximo = agregado
+                else:
+                    if agregado < minimo:
+                        minimo = agregado
+                    if agregado > maximo:
+                        maximo = agregado
             
             numero = prompt("Esto es un prompt", "Por favor ingrese un número")
 
+        self.txt_minimo.delete(0, 200)
+        self.txt_maximo.delete(0, 200)
         self.txt_minimo.insert(0, minimo)
         self.txt_maximo.insert(0, maximo)
 

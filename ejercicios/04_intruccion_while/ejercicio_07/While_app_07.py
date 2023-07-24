@@ -46,7 +46,11 @@ class App(customtkinter.CTk):
 
             numero = prompt("Esto es un prompt", "Ingresar algo que no sea vacío")
 
-        promedio = suma/iterador
+        if(iterador != 0):
+            promedio = suma/iterador
+        else:
+            promedio = 0
+
         self.txt_suma_acumulada.delete(0, 200)
         self.txt_suma_acumulada.insert(0, str(suma))
         self.txt_promedio.delete(0, 200)

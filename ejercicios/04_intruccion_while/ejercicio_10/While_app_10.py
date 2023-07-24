@@ -54,11 +54,15 @@ class App(customtkinter.CTk):
             
             numero = prompt("Esto es un prompt", "Por favor ingrese un número")
 
-        alert("Suma de positivos", str(acumulador_positivos))
-        alert("Cantidad de positivos", str(cantidad_positivos))
-        alert("Suma de negativos", str(acumulador_negativos))
-        alert("Cantidad de negativos", str(cantidad_negativos))
-        alert("Cantidad de ceros", str(ceros))
+        mensaje = ("Estos fueron los valores ingresados:\n\n"\
+                    "Suma de positivos: " + str(acumulador_positivos) + "\n"\
+                    "Cantidad de positivos: " + str(cantidad_positivos) + "\n"\
+                    "Suma de negativos: " + str(acumulador_negativos) + "\n"\
+                    "Cantidad de negativos: " + str(cantidad_negativos) + "\n"\
+                    "Cantidad de ceros: " + str(ceros) + "\n"\
+                    "Diferencia: " + str(acumulador_positivos + acumulador_negativos))
+
+        alert("Esto es un alert", mensaje)
 
 if __name__ == "__main__":
     app = App()
